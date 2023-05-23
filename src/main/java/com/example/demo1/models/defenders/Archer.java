@@ -38,6 +38,8 @@ public class Archer implements TowerDefender {
         return type;
     }
 
+
+
     @Override
     public int getLevel() {
         return level;

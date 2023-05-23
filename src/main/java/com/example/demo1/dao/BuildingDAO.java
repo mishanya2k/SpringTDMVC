@@ -19,6 +19,7 @@ public class BuildingDAO {
     private  TowerDefender towerDefender;
 
     private List<Crossbowman> crossbowmanList;
+    private Building building = new Tower();
     private List<Archer> archerList;
     {
         crossbowmanList = new ArrayList<>();
@@ -48,10 +49,6 @@ public class BuildingDAO {
         System.out.println("12312");
         return towerDefender;
     }
-
-    public void check(){
-
-    }
     public void setArcherDefender(Archer archer){
         this.towerDefender = archer;
     }
@@ -60,15 +57,21 @@ public class BuildingDAO {
     }
     public void buyArcher(Archer archer){
         System.out.println(archer.getType() + ' ' + archer.getDamage() + ' ' + archer.getLevel() + ' ' + archer.getPrice());
-        if (player.getMoney() > archer.getPrice()) {
-//            building.setTowerDefender(archer);
+        if (player.getMoney() > archer.getPrice() && towerDefender==null) {
             player.setMoney(player.getMoney() - archer.getPrice());
         }
     }
     public void buyCrossbowman(Crossbowman crossbowman){
-        if (player.getMoney() > crossbowman.getPrice()) {
-//            building.setTowerDefender(crossbowman);
+        if (player.getMoney() > crossbowman.getPrice()&& towerDefender==null) {
             player.setMoney(player.getMoney() - crossbowman.getPrice());
         }
+    }
+    public void sellArcher(Archer archer){
+        player.setMoney(player.getMoney() + archer.getPrice());
+        archer = null;
+    }
+
+    public void setTowerDefender(TowerDefender towerDefender) {
+        this.towerDefender = towerDefender;
     }
 }

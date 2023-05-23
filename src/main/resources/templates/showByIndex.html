@@ -14,11 +14,20 @@
 <p th:text = "${'Level: ' + chosenbuilding.getLevel()}">level</p>
 <p th:text = "${'Damage: ' + chosenbuilding.getDamage()}">damage</p>
 <p th:text = "${'Price: ' + chosenbuilding.getPrice}">price</p>
-<p th:if = "${'Tower defender: ' + chosenbuilding.getTowerDefender()}"></p>
-
-
-
-
+<h3>Defender in tower:</h3>
+<div th:if = "${defender == null}"/>
+<div>
+</div>
+<div th:if = "${defender != null}">
+    <form th:action="@{/playground/tower/{id} (id=${chosenbuilding.getId()})}" th:method="post" th:object="${defender}">
+<button type="submit" name="button" value="button3" th:text="${'Type: ' + defender?.getType() + ' Level: ' + defender?.getLevel() +
+ ' Damage: ' + defender?.getDamage() + ' Price: ' + defender?.getPrice()}" />
+        <input type="hidden" th:name="type" th:value="${defender?.getType()}"/>
+        <input type="hidden" th:name="damage" th:value="${defender?.getDamage()}"/>
+        <input type="hidden" th:name="price" th:value="${defender?.getPrice()}"/>
+        <input type="hidden" th:name="level" th:value="${defender?.getLevel()}"/>
+    </form>
+    </div>
 <h3>Market</h3>
 <div th:each="archer:${archers}">
     <form th:action="@{/playground/tower/{id} (id=${chosenbuilding.getId()})}" th:method="post" th:object="${archer}">

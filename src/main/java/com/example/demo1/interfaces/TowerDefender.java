@@ -4,4 +4,6 @@ public interface TowerDefender {
     int getDamage();
     int getLevel();
     int getPrice();
+    String getType();
+
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://thymeleaf.org">
+    <title>Title</title>
+</head>
+<body>
+<!--обращаемся к ключу buildings, который был создан в контролере с помощью Model.addAttribute("buildings",...).
+Берем из модели каждый building и выводим его id и уровень -->
+<h3 th:text="${'Your cash: ' + parameters.getCash()}"></h3>
+
+<p th:text = "${'Type: ' + chosenbuilding.getType()}">type</p>
+<p th:text = "${'Id: ' + chosenbuilding.getId()}">id</p>
+<p th:text = "${'Level: ' + chosenbuilding.getLevel()}">level</p>
+<p th:text = "${'Damage: ' + chosenbuilding.getDamage()}">damage</p>
+<p th:text = "${'Price: ' + chosenbuilding.getPrice}">price</p>
+<p th:if = "${'Tower defender: ' + chosenbuilding.getTowerDefender()}"></p>
+
+
+
+
+<h3>Market</h3>
+<div th:each="archer:${archers}">
+    <form th:action="@{/playground/tower/{id} (id=${chosenbuilding.getId()})}" th:method="post" th:object="${archer}">
+        <button type="submit" name="button" value="button1" th:text="${'Type: ' + archer.getType() + ' Level: '
+      + archer.getLevel() + ' Damage: ' + archer.getDamage() + ' Price: ' + archer.getPrice()}"/>
+        <input type="hidden" th:name="type" th:value="${archer.getType()}"/>
+        <input type="hidden" th:name="damage" th:value="${archer.getDamage()}"/>
+        <input type="hidden" th:name="price" th:value="${archer.getPrice()}"/>
+        <input type="hidden" th:name="level" th:value="${archer.getLevel()}"/>
+    </form>
+</div>
+<div th:each="crossbowman:${crossbowmans}">
+    <form th:action="@{/playground/tower/{id} (id=${chosenbuilding.getId()})}" th:method="post" th:object="${crossbowman}">
+        <button type="submit" name="button" value="button2"  th:text="${'Type: ' + crossbowman.getType() + ' Level: '
+      + crossbowman.getLevel() + ' Damage: ' + crossbowman.getDamage() + ' Price: ' + crossbowman.getPrice()}"/>
+        <input type="hidden" th:name="type" th:value="${crossbowman.getType()}"/>
+        <input type="hidden" th:name="damage" th:value="${crossbowman.getDamage()}"/>
+        <input type="hidden" th:name="price" th:value="${crossbowman.getPrice()}"/>
+        <input type="hidden" th:name="level" th:value="${crossbowman.getLevel()}"/>
+    </form>
+
+<!--    <button th:text="${archer.get}"-->
+</div>
+
+<form action="/playground">
+    <button type="submit">back</button>
+</form>
+</body>
+</html>

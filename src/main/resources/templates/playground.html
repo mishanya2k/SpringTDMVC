@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://thymeleaf.org">
+    <title>Playground page</title>
+</head>
+<body>
+<!--параметры нашего игрока-->
+<h3 th:text="${'Your cash: ' + parameters.getCash()}"></h3>
+<h3 th:text="${'Your lives: ' + parameters.getLives()}"></h3>
+<h2>Buildings on playground</h2>
+<!--список вышек building, это наши купленные вышки-->
+<p th:text="${'Amount of towers: ' + buildings.size()}">amount</p>
+<div th:each="building: ${buildings}">
+    <a th:href="@{/playground/tower/{id}(id = ${building.getId()})}"
+       th:text="${'Type: ' + building.getType() + ' Id: ' + building.getId() + ' Level: ' +
+            building.getLevel() + ' Damage: ' + building.getDamage()}">value</a>
+</div>
+</p>
+<!--два листа с вышками и тронами, в <input type/> мы указываем параметры нашим вышкам, которые соответствуют параметрам из списка-->
+<!--также для проверки того, на какую кнопку мы нажимаем, мы используем в тэге button name и value.
+ С помощью @RequestParam  в контроллере берем название нашей кнопки и сравниваем, чтобы понять с каким атрибутом работать-->
+<h3>Market</h3>
+<div th:each="towerBuilding:${towerBuildings}">
+    <form th:action="@{/playground}" th:method="post" th:object="${towerBuilding}">
+        <button type="submit" name="button" value="button1" th:text="${'Type: ' + towerBuilding.getType() + ' Id: ' + towerBuilding.getId() + ' Level: '
+      + towerBuilding.getLevel() + ' Damage: ' + towerBuilding.getDamage() + ' Price: ' + towerBuilding.getPrice()}"/>
+        <input type="hidden" th:name="id" th:value="${towerBuilding.id}"/>
+        <input type="hidden" th:name="type" th:value="${towerBuilding.getType()}"/>
+        <input type="hidden" th:name="damage" th:value="${towerBuilding.getDamage()}"/>
+        <input type="hidden" th:name="price" th:value="${towerBuilding.getPrice()}"/>
+        <input type="hidden" th:name="level" th:value="${towerBuilding.getLevel()}"/>
+    </form>
+</div>
+
+<!--сеттеры не забыть написать для каждой модели), иначе будет создаваться пустой объект соответствуюшего класса-->
+<div th:each="throneBuilding:${throneBuildings}">
+    <form th:action="@{/playground}" th:method="post" th:object="${throneBuilding}">
+        <button type="submit" name="button" value="button2"  th:text="${'Type: ' + throneBuilding.getType() + ' Id: ' + throneBuilding.getId() + ' Level: '
+      + throneBuilding.getLevel() + ' Damage: ' + throneBuilding.getDamage() + ' Price: ' + throneBuilding.getPrice()}"/>
+        <input type="hidden" th:name="id" th:value="${throneBuilding.id}"/>
+        <input type="hidden" th:name="type" th:value="${throneBuilding.getType()}"/>
+        <input type="hidden" th:name="damage" th:value="${throneBuilding.getDamage()}"/>
+        <input type="hidden" th:name="price" th:value="${throneBuilding.getPrice()}"/>
+        <input type="hidden" th:name="level" th:value="${throneBuilding.getLevel()}"/>
+    </form>
+</div>
+<form action="/">
+    <button type="submit">back</button>
+</form>
+</body>
+</html>

@@ -72,13 +72,19 @@ public class PlaygroundController {
             playgroundDAO.getById(id).setTowerDefender(crossbowman);
             buildingDAO.buyCrossbowman(crossbowman);
         } else if ("button3".equals(button) && playgroundDAO.getById(id).getTowerDefender() != null){
-            buildingDAO.sellArcher(archer);
+            if(playgroundDAO.getById(id).getTowerDefender() instanceof Archer){
+                System.out.println("money archer " + playgroundDAO.getById(id).getPrice());
+                buildingDAO.sellArcher(archer);
+            } else if (playgroundDAO.getById(id).getTowerDefender() instanceof Crossbowman) {
+                buildingDAO.sellCrossbowman(crossbowman);
+            }
             playgroundDAO.getById(id).setTowerDefender(null);
         }
 
         return "redirect:/playground/tower/{id}";
+
     }
-    }
+}
 //    @PostMapping("/play/result")
 //    public String play(@ModelAttribute )
 

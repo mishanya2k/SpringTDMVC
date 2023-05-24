@@ -64,10 +64,21 @@ public class BuildingDAO {
             player.setMoney(player.getMoney() - crossbowman.getPrice());
         }
     }
+//    public void sellTowerDefender(TowerDefender towerDefender){
+//        if(towerDefender instanceof Archer){
+//            player.setMoney(player.getMoney() + towerDefender.getPrice());
+//        }
+//        else if(towerDefender instanceof Crossbowman){
+//            player.setMoney(player.getMoney() + towerDefender.getPrice());
+//        }
+//    }
     public void sellArcher(Archer archer){
         player.setMoney(player.getMoney() + archer.getPrice());
     }
 
+    public void sellCrossbowman(Crossbowman crossbowman){
+        player.setMoney(player.getMoney() + crossbowman.getPrice());
+    }
     public void setTowerDefender(TowerDefender towerDefender) {
         this.towerDefender = towerDefender;
     }

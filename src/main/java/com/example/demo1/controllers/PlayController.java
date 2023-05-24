@@ -5,7 +5,7 @@ import com.example.demo1.dao.PlaygroundDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+
 
 @Controller
 public class PlayController {
@@ -29,9 +29,4 @@ public class PlayController {
         model.addAttribute("result",playDAO.play());
         return "result";
     }
-//    @PostMapping("/play/result")
-//    public String play(){
-//
-//        return "result";
-//    }
 }

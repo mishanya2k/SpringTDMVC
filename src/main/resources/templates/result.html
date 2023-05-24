@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://thymeleaf.org">
+    <title>Title</title>
+</head>
+<body>
+<h3 th:text = "${'Cash: ' + parameters.getCash()}"></h3>
+<div th:text="${'Wave power: ' + qwe.getWavePower() + ' Your power: ' + parameters.getPower() + ' Your lives: ' + parameters.getLives()
+ + ' Game count: ' + qwe.getGameCount()}"></div>
+<div th:text="${result}"></div>
+<!--<div th:text="${'Wave power: ' + parameters.getWavePower() + ' Number of wave: ' + parameters.getPlaygroundGameCount() + ' Money: ' + parameters.getCash()-->
+<!-- + ' Your power: ' + parameters.getPower() + ' Your lives: ' + parameters.getLives()}"></div>-->
+<!--<div th:text="${parameters.play()}"></div>-->
+
+<form action="/play">
+    <button type="submit">back</button>
+</form>
+</body>
+</html>

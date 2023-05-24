@@ -51,19 +51,10 @@ public class PlaygroundController {
         return "redirect:/playground";
     }
 
-    @GetMapping("play")
-    public String startToPlay() {
-
-        return "play";
-    }
-
     @GetMapping("/playground/tower/{id}")
     public String getBuildingById(@PathVariable("id") int id, Model model) {
         model.addAttribute("parameters",buildingDAO);
         model.addAttribute("chosenbuilding", playgroundDAO.getById(id));
-        if(playgroundDAO.getById(id).getTowerDefender() == null)
-            System.out.println("null");
-        else
         model.addAttribute("defender",playgroundDAO.getById(id).getTowerDefender());
         model.addAttribute("archers", buildingDAO.getArcherList());
         model.addAttribute("crossbowmans",buildingDAO.getCrossbowmanList());
@@ -75,7 +66,6 @@ public class PlaygroundController {
                               @ModelAttribute("crossbowmans")Crossbowman crossbowman,@RequestParam("button") String button){
         if ("button1".equals(button) && playgroundDAO.getById(id).getTowerDefender() == null) {
             playgroundDAO.getById(id).setTowerDefender(archer);
-            System.out.println(playgroundDAO.getById(id).getTowerDefender().getPrice());
             buildingDAO.buyArcher(archer);
         }
         else if("button2".equals(button) && playgroundDAO.getById(id).getTowerDefender() == null) {
@@ -88,8 +78,13 @@ public class PlaygroundController {
 
         return "redirect:/playground/tower/{id}";
     }
-
     }
+//    @PostMapping("/play/result")
+//    public String play(@ModelAttribute )
+
+
+
+
 
 
 

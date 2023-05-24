@@ -3,12 +3,15 @@ package com.example.demo1.dao;
 import com.example.demo1.interfaces.Building;
 import com.example.demo1.interfaces.TowerDefender;
 import com.example.demo1.models.Player;
+import com.example.demo1.models.Playground;
+import com.example.demo1.models.Wave;
 import com.example.demo1.models.buildings.Throne;
 import com.example.demo1.models.buildings.Tower;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class PlaygroundDAO {
@@ -16,7 +19,10 @@ public class PlaygroundDAO {
     private List<Tower> towerList;
     private List<Throne> throneList;
     private static int id = 0;
+    int power;
     private Player player = new Player();
+    private Wave wave = new Wave();
+    private Playground playground = new Playground();
 
     {
         buildings = new ArrayList<>();
@@ -65,5 +71,19 @@ public class PlaygroundDAO {
             }
 
     }
+    public Player getPlayer(){
+        return player;
+    }
+    public int getPower(){
+        power = 0;
+        for(Building building:buildings){
+            power += building.getDamage();
+        }
+        return power;
+    }
 
+    public int getPlaygroundGameCount(){
+        playground.setGameCount(playground.getGameCount() + 1);
+        return  playground.getGameCount();
+    }
 }

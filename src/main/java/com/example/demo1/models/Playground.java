@@ -11,15 +11,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+
 public class Playground {
+    public Playground() {
+    }
+
+    public Playground(List<Building> listOfBuildings, int power, int gameCount) {
+        this.listOfBuildings = listOfBuildings;
+        this.gameCount = gameCount;
+    }
 
     @Autowired
     private List<Building> listOfBuildings;
-    private int power;
+    private int gameCount = -1;
 
+    public List<Building> getListOfBuildings() {
+        return listOfBuildings;
+    }
+
+    public void setListOfBuildings(List<Building> listOfBuildings) {
+        this.listOfBuildings = listOfBuildings;
+    }
+
+    public int getGameCount() {
+        return gameCount;
+    }
+
+    public void setGameCount(int gameCount) {
+        this.gameCount = gameCount;
+    }
 
 }

@@ -46,7 +46,6 @@ public class BuildingDAO {
     }
 
     public TowerDefender getTowerDefender() {
-        System.out.println("12312");
         return towerDefender;
     }
     public void setArcherDefender(Archer archer){
@@ -56,7 +55,6 @@ public class BuildingDAO {
         this.towerDefender = crossbowman;
     }
     public void buyArcher(Archer archer){
-        System.out.println(archer.getType() + ' ' + archer.getDamage() + ' ' + archer.getLevel() + ' ' + archer.getPrice());
         if (player.getMoney() > archer.getPrice() && towerDefender==null) {
             player.setMoney(player.getMoney() - archer.getPrice());
         }
@@ -68,10 +66,10 @@ public class BuildingDAO {
     }
     public void sellArcher(Archer archer){
         player.setMoney(player.getMoney() + archer.getPrice());
-        archer = null;
     }
 
     public void setTowerDefender(TowerDefender towerDefender) {
         this.towerDefender = towerDefender;
     }
+
 }

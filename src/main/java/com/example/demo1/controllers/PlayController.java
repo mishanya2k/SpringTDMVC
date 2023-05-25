@@ -18,14 +18,13 @@ public class PlayController {
     }
 
     @GetMapping("/play")
-    public String startToPlay() {
-
+    public String startToPlay(Model model) {
+        model.addAttribute("parameters",playgroundDAO);
+        model.addAttribute("qwe",playDAO);
         return "play";
     }
     @GetMapping("/play/result")
     public String play(Model model){
-        model.addAttribute("parameters",playgroundDAO);
-        model.addAttribute("qwe",playDAO);
         model.addAttribute("result",playDAO.play());
         return "result";
     }

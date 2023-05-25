@@ -20,6 +20,12 @@ public class Tower implements Building {
     public Tower() {
     }
 
+    public Tower(int level, String type, int id) {
+        this.level = level;
+        this.type = type;
+        this.id = id;
+    }
+
     public Tower(int id, int level, TowerDefender towerDefender) {
         this.id = id;
         this.level = level;

@@ -8,13 +8,11 @@ import com.example.demo1.models.buildings.Tower;
 import com.example.demo1.models.defenders.Archer;
 import com.example.demo1.models.defenders.Crossbowman;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @Controller
 @AllArgsConstructor

@@ -1,7 +1,6 @@
 package com.example.demo1.dao;
 
 import com.example.demo1.interfaces.Building;
-import com.example.demo1.interfaces.TowerDefender;
 import com.example.demo1.models.Player;
 import com.example.demo1.models.Playground;
 import com.example.demo1.models.Wave;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 
 @Component
 public class PlaygroundDAO {
@@ -58,15 +57,17 @@ public class PlaygroundDAO {
     }
 
     public void buyTower(Tower tower){
+        Tower newTower = new Tower(tower.getLevel(), tower.getType(),id++);
         if(getCash() > tower.getPrice()){
-            buildings.add(tower);
+            buildings.add(newTower);
             player.setMoney(player.getMoney() - tower.getPrice());
         }
     }
 
     public void buyThrone(Throne throne){
+        Throne newThrone = new Throne(id++, throne.getTowerDefender());
             if (getCash() > throne.getPrice()) {
-                buildings.add(throne);
+                buildings.add(newThrone);
                 player.setMoney(player.getMoney() - throne.getPrice());
             }
 

@@ -23,7 +23,7 @@ public class Playground {
 
     @Autowired
     private List<Building> listOfBuildings;
-    private int gameCount = -1;
+    private int gameCount = 0;
 
     public List<Building> getListOfBuildings() {
         return listOfBuildings;

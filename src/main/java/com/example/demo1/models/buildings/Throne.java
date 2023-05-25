@@ -26,6 +26,7 @@ public class Throne implements Building {
     }
 
 
+
     @Override
     public int getId() {
         return id;

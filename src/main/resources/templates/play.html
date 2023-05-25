@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<h3 th:text = "${'Cash: ' + parameters.getCash()}"></h3>
+<div th:text="${'Wave power: ' + qwe.getWavePower() + ' Your power: ' + parameters.getPower() + ' Your lives: ' + parameters.getLives()
+ + ' Game count: ' + qwe.getGameCount()}"></div>
 <form action="/play/result">
     <button type="submit">play</button>
 </form>

@@ -55,12 +55,12 @@ public class BuildingDAO {
         this.towerDefender = crossbowman;
     }
     public void buyArcher(Archer archer){
-        if (player.getMoney() > archer.getPrice() && towerDefender==null) {
+        if (player.getMoney() >= archer.getPrice()) {
             player.setMoney(player.getMoney() - archer.getPrice());
         }
     }
     public void buyCrossbowman(Crossbowman crossbowman){
-        if (player.getMoney() > crossbowman.getPrice()&& towerDefender==null) {
+        if (player.getMoney() >= crossbowman.getPrice()) {
             player.setMoney(player.getMoney() - crossbowman.getPrice());
         }
     }

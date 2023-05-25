@@ -5,7 +5,7 @@ package com.example.demo1.models;
 
 public class Player {
 
-    private static int money = 10000;
+    private static int money = 500;
     private static int lives = 10;
 
     public Player() {
